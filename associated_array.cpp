@@ -8,7 +8,7 @@
 #include <map>
 #include <list>
 
-std::string SeparateCharacters(std::string aString) {
+std::list<char> SeparateCharacters(std::string aString) {
     std::list<char> separated_string;
     int numberOfCharacters;
     int loopCounter;
@@ -28,6 +28,7 @@ main() {
     // this function uses an associative array
 
     std::string userKeyboard = "";
+    std::list<char> separatedCharacters;
 
     // an empty map
     std::map<std::string,std::string> map;
@@ -131,11 +132,18 @@ main() {
     std::cout << "Please enter a string to be translated into hex: ";
     std::cin >> userKeyboard;
     std::cout << " " << std::endl;
-
-    if (map.count(userKeyboard) > 0) {
-        std::cout << userKeyboard << " in hex is " << map[userKeyboard];
-    } else {
-        std::cout << "That string is not registered in this program";
+    
+    // call function
+    separatedCharacters = SeparateCharacters(userKeyboard);
+    
+    for (char singleElement : separatedCharacters) {
+        if (map.count(singleElement) > 0) {
+            
+        }
     }
+
+  
+    std::cout << userKeyboard << " in hex is " << map[userKeyboard];
+    
     std::cout << " " << std::endl;
 }
