@@ -24,11 +24,12 @@ std::list<char> SeparateCharacters(std::string aString) {
 
 
 
-main() {
+int main() {
     // this function uses an associative array
 
     std::string userKeyboard = "";
     std::list<char> separatedCharacters;
+    std::list<std::string> everyHex;
 
     // an empty map
     std::map<std::string,std::string> map;
@@ -137,13 +138,13 @@ main() {
     separatedCharacters = SeparateCharacters(userKeyboard);
     
     for (char singleElement : separatedCharacters) {
-        if (map.count(singleElement) > 0) {
-            
+        if (map.count(&singleElement) > 0) {
+            everyHex.push_back(map[singleElement]);
         }
     }
 
   
-    std::cout << userKeyboard << " in hex is " << map[userKeyboard];
+    std::cout << userKeyboard << " in hex is " << everyHex;
     
     std::cout << " " << std::endl;
 }
