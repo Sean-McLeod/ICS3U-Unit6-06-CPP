@@ -8,23 +8,22 @@
 #include <map>
 #include <list>
 
+
 std::list<char> SeparateCharacters(std::string aString) {
     std::list<char> separated_string;
     int numberOfCharacters;
-    int loopCounter;
-    
+    int counter;
+
     numberOfCharacters = aString.length();
-    for (loopCounter = 0; loopCounter < numberOfCharacters; loopCounter++) {
-        separated_string.push_back(aString[loopCounter]);
+    for (counter = 0; counter < numberOfCharacters; counter++) {
+        separated_string.push_back(aString[counter]);
     }
-    
+
     return separated_string;
-    
 }
 
 
-
-int main() {
+main() {
     // this function uses an associative array
 
     std::string userKeyboard = "";
@@ -128,23 +127,25 @@ int main() {
     map["|"] = "0x7c";
     map["}"] = "0x7d";
     map["~"] = "0x7e";
-    
+
     // input
     std::cout << "Please enter a string to be translated into hex: ";
     std::cin >> userKeyboard;
     std::cout << " " << std::endl;
-    
+
     // call function
     separatedCharacters = SeparateCharacters(userKeyboard);
-    
+
     for (char singleElement : separatedCharacters) {
-        if (map.count(&singleElement) > 0) {
+        if (map.count(singleElement) > 0) {
             everyHex.push_back(map[singleElement]);
+        } else {
+            std::cout << "That string is not registered in this program"
+                      << std::endl;
         }
     }
 
-  
+    // output
     std::cout << userKeyboard << " in hex is " << everyHex;
-    
     std::cout << " " << std::endl;
 }
